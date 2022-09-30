@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div><input id="input1" type="text"></div>
+    <div><input id="input2" type="text"></div>
+    <div><input id="output" type="text"></div>
+
+
+    <script>
+        //퀴즈1. 인풋3개 만들어서 2개의 입력값을 더해서 3번째인풋에 바로 출력
+	   //Number()형변환,  요소.value로 값에 대한 접근
+
+       //1. html input태그3개 만들기
+       //2. 각 인풋태그 선택할수 있도록 id부여
+       //3. 인풋태그에 값을 입력하여 자바스크립트로 추출
+       //4. 숫자로 바꿔서 합치기
+       //5. 합친수를 output으로 할당
+       //6. change이벤트로 묶어서 실시간 출력
+        
+       let input1 = document.getElementById("input1");
+       let input2 = document.getElementById("input2");
+       let output = document.getElementById("output");
+       //요소를 잘 가져오는지 확인.
+       //껍데기 함수만들어서 유저가 값입력후에 호출하여 값을 잘 가져오는지 확인
+       
+       
+       //요소.on이벤트타입 = function(){ 내용 };
+       input1.onchange = function(){
+        output.value = Number(input1.value) + Number(input2.value);
+       }
+       input2.onchange = function(){
+        output.value = Number(input1.value) + Number(input2.value);
+       }
+
+    </script>
+
+</body>
+</html>

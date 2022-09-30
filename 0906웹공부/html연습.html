@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- js쓰는 첫번째 방법 -->
+    <script>
+        //alert("hello world");
+    </script>
+
+    <!-- js쓰는 두번째 방법 -->
+    <script src="myScript.js"></script>
+    
+
+    <!-- css쓰는 2번째방법 -->
+    <style>
+        h1{
+            color : red;
+        }
+    </style>
+
+    <!-- css쓰는 3번째 방법 -->
+    <link rel="stylesheet" href="myFirstCSS.css">
+</head>
+<body>
+
+    <!-- css쓰는 첫번째 방법 -->
+    <div style="color:aquamarine">디브1</div>
+    <div>디브2</div>
+    <div>디브3</div>
+    <br>
+    <span>스팬1</span>
+    <span id="bgYello">스팬2</span>
+    <span>스팬3</span>
+
+    <h1>하이라이트1</h1>
+    <h3>하이라이트3</h3>
+    <h8>하이라이트8</h8>
+
+    <button>버튼1</button>
+    <button>버튼2</button>
+
+    <table border="1">
+        <th>이름</th>
+        <th>나이</th>
+        <th>몸무게</th>
+        <tr>
+            <td>강호동</td>
+            <td>45</td>
+            <td>110</td>
+        </tr>
+        <tr>
+            <td>유재석</td>
+            <td>45</td>
+            <td>73</td>
+        </tr>
+        <tr>
+            <td>아이유</td>
+            <td>25</td>
+            <td>51</td>
+        </tr>
+        <tr>    
+            <td>몸무게합</td>
+            <td colspan="2">234</td>
+        </tr>
+
+    </table>
+
+    <ul>
+        <li>C언어</li>
+        <li class="bigFont">Java</li>
+        <li class="bigFont" id="pinkFont">Python</li>
+        <li>Ruby</li>
+    </ul>
+
+    <!-- id는 이 문서에서 유일하게 선택할수 있도록 지정
+    class는 이 문서에서 공통점을 묶어서 그룹으로 선택할수 있도록 지정
+    name은 백엔드로 넘어갈때의 이름 -->
+
+    form안에 있는 input데이터들이 name의 이름을 가지고 
+    <form action="https://www.naver.com/join" method="get">
+        <div>
+            <input type="text" placeholder="가장 좋아하는 언어" name="favoritePL">
+        </div>
+        <div>
+            <input type="text" placeholder="가장 잘하고싶은 언어" name="wannabePL">
+        </div>
+        <input type="radio">
+        <input type="checkbox">
+        <input type="color">
+        <input type="number">
+        <input type="date">
+        <input type="text">
+
+        <button type="submit">제출</button>
+
+    </form>
+    
+    <img src="https://ursd.org/wp-content/uploads/2020/12/1.png" alt="" width="300px">
+    
+</body>
+</html>

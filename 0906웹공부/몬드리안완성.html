@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 왼쪽 -->
+    <div >
+        <!-- 위 -->
+        <div class="left1"></div>
+
+        <!-- 아래 -->
+        <div class="leftbottom">
+            <!-- 왼쪽 -->
+            <!-- <div></div> -->
+
+            <!-- 오른쪽 -->
+            <div>
+                <!-- 위 -->
+                <div class="middleup"></div>
+                <!-- 아래 -->
+                <div class="middledown"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right1">
+
+    </div>
+
+
+    <style>
+        *{
+            margin : 0px;
+            padding : 0px;
+        }
+        div{
+            position: relative;
+        }
+
+        .left1{
+            background-color: yellow;
+            width : 65vw;
+            height : 50vh;
+        }
+        .right1{
+            position : absolute;
+            /* position: relative; */
+            background-color: royalblue;
+            width : 35vw;
+            height : 100vh;
+            top : 0px;
+            left : 65vw;
+        }
+
+        .leftbottom{
+            background-color: blue;
+            height : 50vh;
+            /*left1에서 50만큼 썼으니까*/
+        }
+
+        .middleup{
+            position : absolute;
+            background-color: #191919;
+            width : 32.5vw;
+            height : 25vh;
+            left : 32.5vw;
+        }
+        .middledown{
+            position : absolute;
+            background-color: white;
+            width : 32.5vw;
+            height : 25vh;
+            left : 32.5vw;
+            top : 25vh;
+        }
+
+    </style>
+</body>
+</html>

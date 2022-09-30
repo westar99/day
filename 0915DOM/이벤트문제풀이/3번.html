@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cola">콜라</div>
+    <button>동적으로h3추가</button>
+    <script>
+        //퀴즈3. h3태그에 "동적으로만든요소" 라는 글자를 콜라밑에 클릭할때마다 추가하는 버튼
+        //1. 콜라라는 글자가 보이는 요소 html로 넣기
+        //2. 이벤트를 연결한 버튼 넣기
+        //3. 함수 껍데기 맡들기
+            //3.1. h3태그 만들기
+            //3.2. "동적으로만든요소"라는 글자를 가진 요소 만들기
+            //3.3  3.2를 3.1에 넣기
+            //3.4  3.3을 콜라 밑에 넣기
+        //4. 버튼을 클릭할때마다 함수 호출 (이벤트 연결)
+        function addDynamicH3(parent){
+            let eleH3 = document.createElement('h3');
+            let eleText = document.createTextNode("동적으로만든요소");
+            eleH3.appendChild(eleText); //h3태그에 텍스트 넣기
+            parent.appendChild(eleH3);  //함수외부에서 전달받은 부모밑에 조립된 h3추가
+        }
+
+        //css문법으로 dom요소를 선택할수 있는 함수 한번 써봄
+        let btn = document.querySelector("button");
+        btn.onclick = function(){
+            let target = document.getElementById("cola");
+            addDynamicH3(target);
+        }
+    </script>
+</body>
+</html>
