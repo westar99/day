@@ -1,0 +1,130 @@
+1006 목요일
+<출석체크>
+09:11 문호준, 박근태, 박세웅(오후), 차형주, 홍승기(오후)
+
+<공지사항>
+- 32인치 모니터 -> 당근마켓에 5만원으로 올렸는데 입찰안되고있는 중
+	 3만원보다 아래에 사야 이득.	 2만원정도가 적절
+     전원이 없어서 1만8천원에 전원어댑터 샀음.
+	 오른쪽 아래 어두운 부분 있음.
+	 모델명 : 담원 KING32S
+	 채제형 : 3만 낙찰
+	 
+
+- 키크론 일렉트론마트 협업. 3개제품. 17->12   25만원급
+- 쿼리 중요성.
+  원천데이터를 가져와서 자바에서 가공, 자바스크립트에서 가공, 쿼리에서 가공
+  속도도 빠르고, 쿼리가 앱이랑 분리되어있기때문에 다른곳에 영향도가 작고, 
+  쿼리를 잘하는 숙련개발자들이 많아서 도와주기도 쉽고.
+
+
+- 기존에 깔렸던 오라클 : 버전:19c
+				루트아이디 : sys, 비밀번호 : temp1234A	  //admin관리자
+				sqlplus로 접속 확인
+				system as sysdba  /  temp1234A
+				루트계정 접속 못하면 오라클 재설치해야함.
+				오라클 지우기 생각보다 훨씬 까다로움. 구글링 해서 하나도 틀리지않게 지워야함
+
+				일반아이디 : ora_user, 비밀번호 : evan
+<학습목표>
+- 에밋설치
+	1. help-eclipse marketplace - emmet 검색 - 다음다음
+	2. jsp에서 적용되도록 설정 변경 : preferences - emmet 검색 - .jsp 확장자 추가
+	3. jsp 파일에서 에밋 작동하는지 테스트
+- 톰캣 찌꺼기 안남도록 Window - Preferences - General - Workspace 
+  - Refresh using native hooks or polling  과    Refresh on access 체크
+- db연결
+- 1교시 : 이론 조금
+	JDBC : Java Database Connectivity
+		자바를 통해서 데이터베이스에 연결할수있는 기술. API
+		자바가 JDBC라는 인터페이스를 통해서 규약을 정해놨고, DBMS업체들들이 그것들을 구현.
+	DBMS : Database Management System
+		데이터베이스 관리 시스템.  예) 오라클, mysql, PostGreSQL...
+	데이터의 영속성 : 프로그램을 꺼져도 데이터를 영구적으로 저장할수 있는 속성.
+		데이터의 영속성을 구현할수있는 기술로는 파일, 데이터베이스
+		데이터베이스는 ROW(행)과 COLUMN(열)로 구성된 테이블을 통해 데이터를 저장한다.
+		열은 속성이고, 행은 데이터다.
+	SQL : Structed Query Language. 구조화된 질의 언어
+	
+	<JDBC를 통해서 디비와 연결하는 절차>
+	각 단계에서 JDBC에서 제공하는 클래스를 사용
+	0. 오라클에서만든 JDBC구현체 ojdbc를 가져와야됨.
+		오라클19는 ojdbc10.jar( JDK10, JDK11 포함)
+		        ojdbc8.jar( JDK8, JDK9, JDK11 포함)
+		jar는 java archive의 약자. 자바로만들어진 압축파일
+		쟤네들이 모여있는곳이 mvnrepository.com
+	1. JDBC드라이버 로드 (DriverManager)
+	2. 데이터베이스와 연결 (Connection)
+	3. SQL문 작성 (문자열 String)
+	4. SQL문 실행 (Statement)
+	5. 실행결과 받기 (ResultSet)
+	6. 데이터베이스와 연결 끊기 (Connection   .close())
+	
+	<dbeaver 프로그램 설치>
+	설치한 디비버로 오라클 루트 계정으로 붙어보세요.(연결)
+	select sysdate from dual;   //쿼리치고 ctrl enter
+		Glbal databse name 전역데이터베이스이름 : orcl
+		SID(System identifier. 시스템식별자)
+	
+	<선생님 오라클 정보>
+	C:\oracle\oradata
+	orcl
+	루트아이디 : sys, 비밀번호 : temp1234A
+	undefined error 계속 떴는데 컴퓨터이름 한글로됐던거 바꾸고 재시작2번하니까 됨
+	
+	
+	<테이블 생성>
+	테이블이름 : MEMBER
+	컬럼 : name, userid(PK지정), pwd, email, phone, admin	  
+		//다 문자열. admin은 boolean
+	문법 : CREATE TABLE 테이블명(
+			컬럼명 데이터타입,
+			컬럼명 데이터타입,
+			PRIMARY KEY(userid)
+		  );
+		  INSERT INTO 테이블명(컬럼명, 컬럼명..) VALUES (값, 값..);
+		  DROP TABLE 테이블명;
+	
+	ctrl enter : 현재 커서가 있는문장 하나 실행
+	alt x : 드래그한것 한번에 실행
+	
+
+<5교시>
+- 디비버 윈도우 - 설정 - 편집기 - 문서편집기 - 행번호표시
+	- 테마같은거 폰트같은거 변경할사람 변경하고
+- DB인스턴스 2개만들어놓고 이름 변경
+- ## 테이블스페이스
+	- 데이터저장단위중 가장 상위의 개념
+	- 지정하지 않는다면 유저별로 테이블스페이스가 할당된다.
+	
+	
+	sts다시 깔고
+	인코딩설정, tomcat 붙이고
+	슬랙에 올라와있는 프로젝트 import
+	
+
+JSP의 목표 : 회원가입, 로그인 화면과 기능 깔끔하게 완성  //CSS없이
+		1. 회원가입화면
+		2. 회원가입화면에서 발생 데이터를 자바단으로 받고
+		3. 자바단에서는 DB로 넣고 (INSERT)
+		4. 다시 자바단에서 DB로 처리한 결과를 가지고 어떤 화면으로 리다이렉트/포워드 할지 결정
+		5. 결과화면
+		
+		6. 로그인화면
+		7. 로그인화면에서 발생한 데이터를 자바단으로 받고
+		8. 자바단에서는 DB로 넣고 (SELECT)
+		9. 다시 자바단에서 DB로 처리한 결과를 가지고 어떤 화면으로 리다이렉트/포워드 할지 결정
+		10. 결과화면
+
+		C = 회원가입
+		R = 로그인
+		U = 회원정보 수정
+		D = 회원탈퇴
+		
+	<팀빌딩>
+	4명 : 정상필, 정민경, 이용수, 오세영
+	3명 : 김선형, 문호준, 박근태
+	2명 : 박세웅, 김승욱
+	2명 : 차형주, 채제형
+	-> 금요일 6교시 목표. 10까지 step.
+		

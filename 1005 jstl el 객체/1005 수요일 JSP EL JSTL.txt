@@ -1,0 +1,143 @@
+1005 수요일
+<출석체크>
+09:12 문호준, 차형주
+
+<공지사항>
+- 자기가 짜놓은 코드를 자기만 볼수있고 남들은 해석하지 못한다. => 유지보수를 자기만 할수있다.
+- 자기가 짜놓은 코드를 누구나 다 해석할수 있다. => 유지보수를 누구나 할수있다.
+- 밑에처럼 짜야됨.
+- 스프링수업한다음 스프링부트 끝나고 팀빌딩  스트링부트 수업들어갈때 팀빌딩, 주제같은거 정하고 (대략2주뒤)
+  데이터분석가들도 주제에 맞는 데이터분석
+  
+  주제가 뭐가 되든 상관없는 기획 : 50%. 
+	화면프레임워크(통일성 어떻게 할래?)
+	패키지, 클래스명, 화면명, 변수명, 함수명에 대한 규칙 어떻게 할래
+	주제에 상관없이 있어야 되는 테이블, 
+	API 설계 지금 못하고
+	
+  주제에 따라 달라지는 기획 50%.
+  프론트, 백, 데이터베이스, 데이터분석
+  
+  기획 : 주제선정 : 하루
+	    기능명세서(2일~5일), 화면설계서(하루), 테이블설계서(erd)(2일~5일)
+		병렬적으로 진행하면 4일이면 모든 설계 끝
+  개발 : 빠르면 3주~ 느리면5주
+  배포 : 90%는 배포 못하고 20명중에 2명정도만 배포.
+	드래그앤드랍식으로 프로젝트를 구축된 서버에 올리는 개념이 아니라
+	서버를 구축하는 능력을 가지는게 배포다.  리눅스, 보안, 프로토콜, ftp, ssh
+  10월 17일 스프링부트 시작할때 팀빌딩 끝
+
+<학습목표>
+- 1교시 JSP복습
+  HTML코드안에 <% 자바코드 %>			//스크립틀릿
+  JSP주석 : <%-- 자바코드 --%>
+  선언전용 문법 : <%! 자바코드 %>
+  출력전용 문법 : <%= 자바코드 %>		//표현식
+  
+  A.JSP에서 B.JSP로 데이터 전달하는법
+	내장객체중 한군데다가 담아야된다. page < request < session < application
+	보내는쪽에서는 form안에 input name으로 네임명 설정
+	받는쪽에서 String 변수명 = request.getParameter("네임명");
+
+   forward vs redirect
+   
+   포워드 : 잠시 기다려주세요 하고 지금전화받고있는 상담원이 다른상담원에게 답을 구해서 알려주는 방식. 기존정보가 유지된다.
+   리다이렉트 : 리다이얼로 암기. 다시 전화돌리는거니까 기존정보가 없어진다.
+   
+   PRG패턴(Post - Redirect - Get)
+     : 포스트 요청에 대한 응답을 직접 하지않고 또다른 get요청으로 처리하는 패턴.
+	 : 왜이런 패턴을 쓰지?  post방식으로 전달된 데이터를 리다이렉트과정을 통해서 데이터를 남기지 않기 위해서. 
+	 : 쉽게말해서 새로고침으로 인한 문제를 방지하기 위해서
+	 예) 글쓰기 명령이 떨어졌는데 새로고침해버리면? 계속해서 글쓰기 명령이 들어간다.
+	
+	스크립틀릿과 HTML의 script를 왔다갔다 할때 <%를 열고 %>를 닫고 왔다갔다 해서 귀찮았고, 실수하기가 쉬웠다.
+	그것의 해결이 JSTL과 EL
+	
+	JSTL : Jsp Standard Tag Library
+		문법 : <jsp:태그명 속성="값" />
+		얻는 효과(왜쓰는가) : 
+			<% if (조건) %>
+				html내용
+			<% else %>
+				html내용
+		위처럼 썼던것을
+		<c:if test="조건">
+			html내용
+		</c:if>
+		
+	JSTL을 쓰려고 하면 라이브러리를 다운받고, 프로젝트안에 추가해주고, 클래스패스에 넣고, jsp상단에 taglib선언문을 추가
+	https://bvc12.tistory.com/239
+	
+	
+- JSTL(Jsp Standard Tag Library) : 2교시
+- EL(Expression Language)표현언어 : 3교시
+	자바코드를 쓰지않고도 자바 객체를 가져올수 있는 언어.
+	<%= 변수명 %>  썼던것을   ${변수명}  할수있게 해준다.
+	**내장객체를 명시하지않고 그냥 변수명을 쓰면 스코프 순서대로 범위를 확장해나가면서 탐색한다.**
+	page < request < session < application
+	
+	예1)
+		<!-- El이 없었을때의 상황 -->
+		<%
+		String userId = request.getParameter("userId");
+		%>
+		<input type="text" value= <%= userId %>  >
+
+		<!-- EL이 생기고의 상황 -->
+		<input type="text" value="${param.userId}">
+		<!-- page, request, session, application 을 확장해나가면서 내부적으로 getPameter호출 -->
+
+	
+	
+	예2) <%= num %>  이라고 하면 
+	  <%= pageContext.num %> 이 있나보고 없으면
+	  <%= requestContext.num %>이 있나 보고
+
+	문제) join.jsp 에서 작성된 id, pw, name, age를
+	     index.jsp에서 EL표기법으로 출력
+    해설 : EL이 아니였을때 request.getParamter("id")
+	      EL을 쓰면 ${객체.변수명}
+		  ${param.id}
+	보충설명 : 표현식  <%=변수%>   변수를 변수로 인식한다.
+	       표현언어 ${변수}  변수를 속성으로 인식한다.
+		   session.getAttribute("num");
+		   ${sessionScope.num}
+		   page -> request -> session -> application
+		   요개념을 실제로 EL에서 접근하려면 뒤에Scope
+		   pageScope -> requestScope -> sessionScope -> applicationScope
+		   만약에 A.jsp에서 session.setAttribute("내언어", "자바");
+		   B.jsp에서 ${sessionScope.내언어};
+		   그냥 ${내언어}를 하면?   위에 스코프 타고다니면서 작은범위에있는걸 출력
+	포인트 : EL표기법에 쓸수있는 자바객체는 ${}안에 있는 모든 자바변수가 아니다.
+		   위의 4개 Scope안에 저장된 속성만 EL표기법으로 쓸수있다.
+	
+	
+	4교시 : 오전동안 했던것 자습
+	
+	<선생님숙제>
+	컨텍스트 범위 증가하면서 검색하는거 에러뜸. => 변수가 한글이여서 그랬음
+	
+	5교시 : 노션사용노하우, 객체(자바빈)
+		톰캣(웹서버)가 .class파일을 인지 못해서 <%@ page import="kr.co.human.Member" %> 에서 에러가났다.
+		
+		
+	<자바빈 만들기>
+		1. 다이나믹웹프로젝트로 NoSimpleJSP 만들고 서버연동해서 index.jsp 만들고 hello world띄우는거
+			//서버에러 뜨면 라이브러리에 Classpath - Add Library - tomcat server추가
+			//그래도 안되면 project clean
+		2. jstl 라이브러리 WEB-INF/lib 폴더안에 넣기
+		3. WEB-INF/classes 폴더만들고 프로젝트 자바빌드패스 - Source
+			- 디폴트아웃풋폴더를 방금만든 classes폴더로 선택
+		4. kr.co.human 패키지 생성, Member클래스 만들고 useBeanDemo.jsp 
+		   import 정상 확인
+		5. 회원가입폼 addMemberForm.jsp
+			
+			
+
+		
+	
+
+	
+	
+	
+- 객체에다가 정보담기
