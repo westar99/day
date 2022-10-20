@@ -1,0 +1,45 @@
+1017 월요일 스프링부트 시작
+<출석체크>
+09:13 김선형, 김승욱, 박근태, 이용수, 정상필, 채제형 빼고 다 지각
+
+
+<공지사항>
+- 스프링부트 공부.md
+- 1~4스프링 환경설정
+- 5교시 : 스프링부트에서 db연결 테스트
+- 6교시 : 팀빌딩 확정
+- 7,8교시 : 아이디어회의
+=> why, who, what, how를 서비스설명듣고 파악하거나 유추할수 있도록
+누구를 위한 어떤 가치를 제공해주는 서비스인지
+
+
+<학습목표>
+- 환경설정
+	- JDK, JAVA_HOME, CLASSPATH, PATH
+	- STS4 다운
+		안에있는 contents압축풀고 sts3 설치위치로 같이 옮겨주기
+	- SpringToolSuite4.ini   인코딩설정, 메모리 설정
+	- 정상실행확인
+		작업표시줄에 고정
+		워크스페이스도 sts3의 워크스페이스와 형제 위치로
+	- sts설정
+		show heap 설정
+		help - install new software - sts검색후 첫번째꺼
+			Web, XML, Java EE 체크하는영역이 없다. 그래서 아랫부분 설치
+		help - 마켓플레이스 - 톱니바퀴 Elipse Web Developer
+		인코딩 설정
+		테마 설정
+		mybatis, thmeleaf
+		퍼스펙티브 설정
+		=> 나중에 lombok, 
+	- 스프링부트 프로젝트 생성
+	- mysql 설치
+		구글에서 mysql download 검색 - 공식사이트 - 약간 아랫부분에 MySQL Community (GPL) Downloads »
+		- MySQL Installer for Windows - GA버전의 용량높은것 .msi 다운 - no thanks just download
+		- 디폴트로 다음다음 - next 를 생각보다 훨씬 많이해야한다.
+		- 루트계정 비번은 system123으로 통일
+		- 자기 유저 하나 생성
+		- dbeaver 에서 root계정 접속 테스트, 자기가만든 유저 테스트
+		- publickey 허용해달라고 하면 db객체 우클릭 - 연결편집 - Driver Properties에서 allow pulblic key allowed를 True로 변경
+- 5교시 : DB연동
+
